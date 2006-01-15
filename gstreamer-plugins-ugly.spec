@@ -16,6 +16,7 @@ Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
 # Source0-md5:	f2b16c8e15816cf3ee9a1ca540491fe9
 Patch0:		%{name}-bashish.patch
+URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.5
 BuildRequires:	glib2-devel >= 1:2.6.0
