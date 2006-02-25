@@ -4,17 +4,17 @@
 #
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
-%define		gst_req_ver	0.10.1
+%define		gst_req_ver	0.10.3
 #
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl):	Brzydkie wtyczki do ¶rodowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.1
-Release:	0.1
+Version:	0.10.2
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	f2b16c8e15816cf3ee9a1ca540491fe9
+# Source0-md5:	cf604b6acd80b57dc5173db7e93fc116
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	a52dec-libs-devel
 BuildRequires:	amrnb-devel
 BuildRequires:	lame-libs-devel
+BuildRequires:	libdvdread-devel
 BuildRequires:	libid3tag-devel >= 0.15
 BuildRequires:	libmad-devel >= 0.15
 %{?with_sid:BuildRequires:	libsidplay-devel >= 1.36.57}
@@ -84,6 +85,19 @@ Plugin for decoding of AMR-NB files.
 
 %description -n gstreamer-amrnb -l pl
 Wtyczka dekoduj±ca pliki AMR-NB.
+
+%package -n gstreamer-dvdread
+Summary:	GStreamer plugin for DVD playback
+Summary(pl):	Wtyczka do GStreamera odtwarzaj±ca DVD
+Group:		Libraries
+Requires:	gstreamer >= %{gst_req_ver}
+Obsoletes:	gstreamer-libdvdread
+
+%description -n gstreamer-dvdread
+GStreamer plugin for DVD playback.
+
+%description -n gstreamer-dvdread -l pl
+Wtyczka odtwarzaj±ca DVD do GStreamera.
 
 %package -n gstreamer-lame
 Summary:	GStreamer plugin encoding MP3 songs
@@ -163,6 +177,7 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README RELEASE
+%attr(755,root,root) %{gstlibdir}/libgstasf.so
 %attr(755,root,root) %{gstlibdir}/libgstdvdlpcmdec.so
 %attr(755,root,root) %{gstlibdir}/libgstiec958.so
 %attr(755,root,root) %{gstlibdir}/libgstrmdemux.so
@@ -179,6 +194,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -n gstreamer-amrnb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstamrnb.so
+
+%files -n gstreamer-dvdread
+%defattr(644,root,root,755)
+%attr(755,root,root) %{gstlibdir}/libgstdvdread.so
 
 %files -n gstreamer-lame
 %defattr(644,root,root,755)
