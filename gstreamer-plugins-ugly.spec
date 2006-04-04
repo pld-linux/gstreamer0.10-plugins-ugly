@@ -9,12 +9,12 @@
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl):	Brzydkie wtyczki do ¶rodowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.2
+Version:	0.10.3
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	cf604b6acd80b57dc5173db7e93fc116
+# Source0-md5:	af6f238507b0040bf84fcbc6a241e559
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -179,6 +179,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS ChangeLog NEWS README RELEASE
 %attr(755,root,root) %{gstlibdir}/libgstasf.so
 %attr(755,root,root) %{gstlibdir}/libgstdvdlpcmdec.so
+%attr(755,root,root) %{gstlibdir}/libgstdvdsub.so
 %attr(755,root,root) %{gstlibdir}/libgstiec958.so
 %attr(755,root,root) %{gstlibdir}/libgstrmdemux.so
 %{_gtkdocdir}/gst-plugins-ugly-plugins-*
