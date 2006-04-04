@@ -40,6 +40,7 @@ BuildRequires:	mpeg2dec-devel >= 0.4.0
 BuildRequires:	rpmbuild(macros) >= 1.98
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gst_req_ver}
+Obsoletes:	gstreamer-asf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		gstlibdir 	%{_libdir}/gstreamer-%{gst_major_ver}
