@@ -91,6 +91,8 @@ Wtyczka dekoduj±ca pliki AMR-NB.
 Summary:	GStreamer plugin for DVD playback
 Summary(pl):	Wtyczka do GStreamera odtwarzaj±ca DVD
 Group:		Libraries
+# for NLS (when non-empty *.mo appear)
+#Requires:	%{name} = %{version}-%{release}
 Requires:	gstreamer >= %{gst_req_ver}
 Obsoletes:	gstreamer-libdvdread
 
@@ -172,10 +174,13 @@ rm -rf $RPM_BUILD_ROOT
 # We don't need plugins' *.la files
 rm -f $RPM_BUILD_ROOT%{gstlibdir}/*.la
 
+#%find_lang %{gstname}-%{gst_major_ver}
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
+# -f %{gstname}-%{gst_major_ver}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README RELEASE
 %attr(755,root,root) %{gstlibdir}/libgstasf.so
