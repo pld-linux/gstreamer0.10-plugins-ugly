@@ -1,6 +1,7 @@
 #
 # Conditional build:
 %bcond_without	sid		# don't build sid plugin
+%bcond_with	amr		# AMR-NB plugin
 #
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
@@ -9,12 +10,12 @@
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl):	Brzydkie wtyczki do ¶rodowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.4
+Version:	0.10.5
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	c10f40e3641d827ca7853b0a3d560257
+# Source0-md5:	2e6bf35ebcb2ab508b43ef3aaee878ad
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -26,11 +27,13 @@ BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	liboil-devel >= 0.3.9
 BuildRequires:	libtool >= 1.4
 BuildRequires:	pkgconfig >= 1:0.9.0
+BuildRequires:	python >= 2.1
+BuildRequires:	python-PyXML
 ##
 ## plugins
 ##
 BuildRequires:	a52dec-libs-devel
-BuildRequires:	amrnb-devel
+%{?with_amr:BuildRequires:	amrnb-devel}
 BuildRequires:	lame-libs-devel
 BuildRequires:	libdvdread-devel
 BuildRequires:	libid3tag-devel >= 0.15
@@ -158,6 +161,7 @@ Wtyczka do odtwarzania plików z muzyk± w formacie C64 SID.
 %{__autoheader}
 %{__automake}
 %configure \
+	%{!?with_amr:--disable-amrnb} \
 	%{!?with_sid:--disable-sidplay} \
 	--disable-static \
 	--enable-gtk-doc \
@@ -198,9 +202,11 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgsta52dec.so
 
+%if %{with amr}
 %files -n gstreamer-amrnb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstamrnb.so
+%endif
 
 %files -n gstreamer-dvdread
 %defattr(644,root,root,755)
