@@ -8,7 +8,7 @@
 %define		gst_req_ver	0.10.9
 #
 Summary:	Ugly GStreamer Streaming-media framework plugins
-Summary(pl):	Brzydkie wtyczki do ¶rodowiska obróbki strumieni GStreamer
+Summary(pl.UTF-8):   Brzydkie wtyczki do Å›rodowiska obrÃ³bki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
 Version:	0.10.5
 Release:	1
@@ -56,13 +56,13 @@ about anything else media-related. Its plugin-based architecture means
 that new data types or processing capabilities can be added simply by
 installing new plugins.
 
-%description -l pl
-GStreamer to ¶rodowisko obróbki danych strumieniowych, bazuj±ce na
-grafie filtrów operuj±cych na danych medialnych. Aplikacje u¿ywaj±ce
-tej biblioteki mog± robiæ wszystko od przetwarzania d¼wiêku w czasie
-rzeczywistym, do odtwarzania filmów i czegokolwiek innego zwi±zego z
-mediami. Architektura bazuj±ca na wtyczkach pozwala na ³atwe dodawanie
-nowych typów danych lub mo¿liwo¶ci obróbki.
+%description -l pl.UTF-8
+GStreamer to Å›rodowisko obrÃ³bki danych strumieniowych, bazujÄ…ce na
+grafie filtrÃ³w operujÄ…cych na danych medialnych. Aplikacje uÅ¼ywajÄ…ce
+tej biblioteki mogÄ… robiÄ‡ wszystko od przetwarzania dÅºwiÄ™ku w czasie
+rzeczywistym, do odtwarzania filmÃ³w i czegokolwiek innego zwiÄ…zego z
+mediami. Architektura bazujÄ…ca na wtyczkach pozwala na Å‚atwe dodawanie
+nowych typÃ³w danych lub moÅ¼liwoÅ›ci obrÃ³bki.
 
 ##
 ## Plugins
@@ -70,29 +70,29 @@ nowych typów danych lub mo¿liwo¶ci obróbki.
 
 %package -n gstreamer-a52dec
 Summary:	GStreamer VOB decoder plugin
-Summary(pl):	Wtyczka do GStreamera dekoduj±ca VOB
+Summary(pl.UTF-8):   Wtyczka do GStreamera dekodujÄ…ca VOB
 Group:		Libraries
 
 %description -n gstreamer-a52dec
 Plugin for decoding of VOB files.
 
-%description -n gstreamer-a52dec -l pl
-Wtyczka dekoduj±ca pliki VOB.
+%description -n gstreamer-a52dec -l pl.UTF-8
+Wtyczka dekodujÄ…ca pliki VOB.
 
 %package -n gstreamer-amrnb
 Summary:	GStreamer AMR-NB decoder plugin
-Summary(pl):	Wtyczka do GStreamera dekoduj±ca pliki AMR-NB
+Summary(pl.UTF-8):   Wtyczka do GStreamera dekodujÄ…ca pliki AMR-NB
 Group:		Libraries
 
 %description -n gstreamer-amrnb
 Plugin for decoding of AMR-NB files.
 
-%description -n gstreamer-amrnb -l pl
-Wtyczka dekoduj±ca pliki AMR-NB.
+%description -n gstreamer-amrnb -l pl.UTF-8
+Wtyczka dekodujÄ…ca pliki AMR-NB.
 
 %package -n gstreamer-dvdread
 Summary:	GStreamer plugin for DVD playback
-Summary(pl):	Wtyczka do GStreamera odtwarzaj±ca DVD
+Summary(pl.UTF-8):   Wtyczka do GStreamera odtwarzajÄ…ca DVD
 Group:		Libraries
 # for NLS (when non-empty *.mo appear)
 #Requires:	%{name} = %{version}-%{release}
@@ -102,53 +102,53 @@ Obsoletes:	gstreamer-libdvdread
 %description -n gstreamer-dvdread
 GStreamer plugin for DVD playback.
 
-%description -n gstreamer-dvdread -l pl
-Wtyczka odtwarzaj±ca DVD do GStreamera.
+%description -n gstreamer-dvdread -l pl.UTF-8
+Wtyczka odtwarzajÄ…ca DVD do GStreamera.
 
 %package -n gstreamer-lame
 Summary:	GStreamer plugin encoding MP3 songs
-Summary(pl):	Wtyczka do GStreamera koduj±ca pliki MP3
+Summary(pl.UTF-8):   Wtyczka do GStreamera kodujÄ…ca pliki MP3
 Group:		Libraries
 
 %description -n gstreamer-lame
 Plugin for encoding MP3 with lame.
 
-%description -n gstreamer-lame -l pl
-Wtyczka do GStreamera koduj±ca pliki MP3 przy u¿yciu lame.
+%description -n gstreamer-lame -l pl.UTF-8
+Wtyczka do GStreamera kodujÄ…ca pliki MP3 przy uÅ¼yciu lame.
 
 %package -n gstreamer-mad
 Summary:	GStreamer plugin using MAD for MP3 decoding
-Summary(pl):	Wtyczka do GStreamera u¿ywaj±ca MAD do dekodowania MP3
+Summary(pl.UTF-8):   Wtyczka do GStreamera uÅ¼ywajÄ…ca MAD do dekodowania MP3
 Group:		Libraries
 
 %description -n gstreamer-mad
 Plugin for playback of MP3 songs using the very good MAD library.
 
-%description -n gstreamer-mad -l pl
-Wtyczka do odtwarzania plików MP3 przy u¿yciu bardzo dobrej biblioteki
+%description -n gstreamer-mad -l pl.UTF-8
+Wtyczka do odtwarzania plikÃ³w MP3 przy uÅ¼yciu bardzo dobrej biblioteki
 MAD.
 
 %package -n gstreamer-mpeg
 Summary:	GStreamer plugins for MPEG video playback and encoding
-Summary(pl):	Wtyczka do GStreamera odtwarzaj±ca i koduj±ca obraz MPEG
+Summary(pl.UTF-8):   Wtyczka do GStreamera odtwarzajÄ…ca i kodujÄ…ca obraz MPEG
 Group:		Libraries
 
 %description -n gstreamer-mpeg
 Plugins for playing and encoding MPEG video.
 
-%description -n gstreamer-mpeg -l pl
+%description -n gstreamer-mpeg -l pl.UTF-8
 Wtyczki do odtwarzania i kodowania obrazu MPEG.
 
 %package -n gstreamer-sid
 Summary:	GStreamer Sid C64 music plugin
-Summary(pl):	Wtyczka do GStreamera odtwarzaj±ca muzykê Sid C64
+Summary(pl.UTF-8):   Wtyczka do GStreamera odtwarzajÄ…ca muzykÄ™ Sid C64
 Group:		Libraries
 
 %description -n gstreamer-sid
 Plugin for playback of C64 SID format music files.
 
-%description -n gstreamer-sid -l pl
-Wtyczka do odtwarzania plików z muzyk± w formacie C64 SID.
+%description -n gstreamer-sid -l pl.UTF-8
+Wtyczka do odtwarzania plikÃ³w z muzykÄ… w formacie C64 SID.
 
 %prep
 %setup -q -n %{gstname}-%{version}
