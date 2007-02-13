@@ -8,7 +8,7 @@
 %define		gst_req_ver	0.10.9
 #
 Summary:	Ugly GStreamer Streaming-media framework plugins
-Summary(pl.UTF-8):   Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
+Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
 Version:	0.10.5
 Release:	1
@@ -70,7 +70,7 @@ nowych typów danych lub możliwości obróbki.
 
 %package -n gstreamer-a52dec
 Summary:	GStreamer VOB decoder plugin
-Summary(pl.UTF-8):   Wtyczka do GStreamera dekodująca VOB
+Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca VOB
 Group:		Libraries
 
 %description -n gstreamer-a52dec
@@ -81,7 +81,7 @@ Wtyczka dekodująca pliki VOB.
 
 %package -n gstreamer-amrnb
 Summary:	GStreamer AMR-NB decoder plugin
-Summary(pl.UTF-8):   Wtyczka do GStreamera dekodująca pliki AMR-NB
+Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-NB
 Group:		Libraries
 
 %description -n gstreamer-amrnb
@@ -92,7 +92,7 @@ Wtyczka dekodująca pliki AMR-NB.
 
 %package -n gstreamer-dvdread
 Summary:	GStreamer plugin for DVD playback
-Summary(pl.UTF-8):   Wtyczka do GStreamera odtwarzająca DVD
+Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca DVD
 Group:		Libraries
 # for NLS (when non-empty *.mo appear)
 #Requires:	%{name} = %{version}-%{release}
@@ -107,7 +107,7 @@ Wtyczka odtwarzająca DVD do GStreamera.
 
 %package -n gstreamer-lame
 Summary:	GStreamer plugin encoding MP3 songs
-Summary(pl.UTF-8):   Wtyczka do GStreamera kodująca pliki MP3
+Summary(pl.UTF-8):	Wtyczka do GStreamera kodująca pliki MP3
 Group:		Libraries
 
 %description -n gstreamer-lame
@@ -118,7 +118,7 @@ Wtyczka do GStreamera kodująca pliki MP3 przy użyciu lame.
 
 %package -n gstreamer-mad
 Summary:	GStreamer plugin using MAD for MP3 decoding
-Summary(pl.UTF-8):   Wtyczka do GStreamera używająca MAD do dekodowania MP3
+Summary(pl.UTF-8):	Wtyczka do GStreamera używająca MAD do dekodowania MP3
 Group:		Libraries
 
 %description -n gstreamer-mad
@@ -130,7 +130,7 @@ MAD.
 
 %package -n gstreamer-mpeg
 Summary:	GStreamer plugins for MPEG video playback and encoding
-Summary(pl.UTF-8):   Wtyczka do GStreamera odtwarzająca i kodująca obraz MPEG
+Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca i kodująca obraz MPEG
 Group:		Libraries
 
 %description -n gstreamer-mpeg
@@ -141,7 +141,7 @@ Wtyczki do odtwarzania i kodowania obrazu MPEG.
 
 %package -n gstreamer-sid
 Summary:	GStreamer Sid C64 music plugin
-Summary(pl.UTF-8):   Wtyczka do GStreamera odtwarzająca muzykę Sid C64
+Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca muzykę Sid C64
 Group:		Libraries
 
 %description -n gstreamer-sid
