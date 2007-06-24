@@ -6,23 +6,24 @@
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
 %define		gst_req_ver	0.10.9
+%define		gstpb_req_ver	0.10.9
 #
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.5
+Version:	0.10.6
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	2e6bf35ebcb2ab508b43ef3aaee878ad
+# Source0-md5:	f1016148ecbfba968c0ef1773066988b
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.5
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gstreamer-devel >= %{gst_req_ver}
-BuildRequires:	gstreamer-plugins-base-devel >= %{gst_req_ver}
+BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	liboil-devel >= 0.3.9
 BuildRequires:	libtool >= 1.4
@@ -72,6 +73,7 @@ nowych typów danych lub możliwości obróbki.
 Summary:	GStreamer VOB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca VOB
 Group:		Libraries
+Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
 
 %description -n gstreamer-a52dec
 Plugin for decoding of VOB files.
@@ -83,6 +85,7 @@ Wtyczka dekodująca pliki VOB.
 Summary:	GStreamer AMR-NB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-NB
 Group:		Libraries
+Requires:	gstreamer >= %{gst_req_ver}
 
 %description -n gstreamer-amrnb
 Plugin for decoding of AMR-NB files.
@@ -94,8 +97,8 @@ Wtyczka dekodująca pliki AMR-NB.
 Summary:	GStreamer plugin for DVD playback
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca DVD
 Group:		Libraries
-# for NLS (when non-empty *.mo appear)
-#Requires:	%{name} = %{version}-%{release}
+# for NLS
+Requires:	%{name} = %{version}-%{release}
 Requires:	gstreamer >= %{gst_req_ver}
 Obsoletes:	gstreamer-libdvdread
 
@@ -109,6 +112,9 @@ Wtyczka odtwarzająca DVD do GStreamera.
 Summary:	GStreamer plugin encoding MP3 songs
 Summary(pl.UTF-8):	Wtyczka do GStreamera kodująca pliki MP3
 Group:		Libraries
+# for NLS
+Requires:	%{name} = %{version}-%{release}
+Requires:	gstreamer >= %{gst_req_ver}
 
 %description -n gstreamer-lame
 Plugin for encoding MP3 with lame.
@@ -120,6 +126,7 @@ Wtyczka do GStreamera kodująca pliki MP3 przy użyciu lame.
 Summary:	GStreamer plugin using MAD for MP3 decoding
 Summary(pl.UTF-8):	Wtyczka do GStreamera używająca MAD do dekodowania MP3
 Group:		Libraries
+Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
 
 %description -n gstreamer-mad
 Plugin for playback of MP3 songs using the very good MAD library.
@@ -132,6 +139,7 @@ MAD.
 Summary:	GStreamer plugins for MPEG video playback and encoding
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca i kodująca obraz MPEG
 Group:		Libraries
+Requires:	gstreamer >= %{gst_req_ver}
 
 %description -n gstreamer-mpeg
 Plugins for playing and encoding MPEG video.
@@ -143,6 +151,7 @@ Wtyczki do odtwarzania i kodowania obrazu MPEG.
 Summary:	GStreamer Sid C64 music plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca muzykę Sid C64
 Group:		Libraries
+Requires:	gstreamer >= %{gst_req_ver}
 
 %description -n gstreamer-sid
 Plugin for playback of C64 SID format music files.
@@ -178,13 +187,12 @@ rm -rf $RPM_BUILD_ROOT
 # We don't need plugins' *.la files
 rm -f $RPM_BUILD_ROOT%{gstlibdir}/*.la
 
-#%find_lang %{gstname}-%{gst_major_ver}
+%find_lang %{gstname}-%{gst_major_ver}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
-# -f %{gstname}-%{gst_major_ver}.lang
+%files -f %{gstname}-%{gst_major_ver}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README RELEASE
 %attr(755,root,root) %{gstlibdir}/libgstasf.so
