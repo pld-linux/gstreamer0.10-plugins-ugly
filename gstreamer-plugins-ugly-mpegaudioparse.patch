@@ -1,0 +1,57 @@
+diff -up gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.h.orig gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.h
+--- gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.h.orig	2007-06-13 11:21:26.000000000 +0200
++++ gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.h	2007-09-02 15:05:01.000000000 +0200
+@@ -82,6 +82,9 @@ struct _GstMPEGAudioParse {
+   guchar xing_seek_table[100];
+   guint32 xing_vbr_scale;
+   guint   xing_bitrate;
++
++  /* pending segment */
++  GstEvent *pending_segment;
+ };
+ 
+ struct _GstMPEGAudioParseClass {
+diff -up gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.c.orig gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.c
+--- gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.c.orig	2007-06-13 11:21:26.000000000 +0200
++++ gst-plugins-ugly-0.10.6/gst/mpegaudioparse/gstmpegaudioparse.c	2007-09-02 15:04:25.000000000 +0200
+@@ -329,6 +329,7 @@ gst_mp3parse_sink_event (GstPad * pad, G
+ {
+   gboolean res;
+   GstMPEGAudioParse *mp3parse;
++  GstEvent **eventp;
+ 
+   mp3parse = GST_MP3PARSE (gst_pad_get_parent (pad));
+ 
+@@ -379,12 +380,18 @@ gst_mp3parse_sink_event (GstPad * pad, G
+       GST_DEBUG_OBJECT (mp3parse, "Pushing newseg rate %g, applied rate %g, "
+           "format %d, start %lld, stop %lld, pos %lld\n",
+           rate, applied_rate, format, start, stop, pos);
+-      res = gst_pad_push_event (mp3parse->srcpad, event);
++      /* save the segment for later, right before we push a new buffer so that
++       * the caps are fixed and the next linked element can receive the segment. */
++      eventp = &mp3parse->pending_segment;
++      gst_event_replace (eventp, event);
++      res = TRUE;
+       break;
+     }
+     case GST_EVENT_FLUSH_STOP:
+       /* Clear our adapter and set up for a new position */
+       gst_adapter_clear (mp3parse->adapter);
++      eventp = &mp3parse->pending_segment;
++      gst_event_replace (eventp, NULL);
+       res = gst_pad_push_event (mp3parse->srcpad, event);
+       break;
+     default:
+@@ -483,6 +490,12 @@ gst_mp3parse_emit_frame (GstMPEGAudioPar
+         mp3parse->srcpad, taglist);
+   }
+ 
++  /* push any pending segment now */
++  if (mp3parse->pending_segment) {
++    gst_pad_push_event (mp3parse->srcpad, mp3parse->pending_segment);
++    mp3parse->pending_segment = NULL;
++  }
++
+   return gst_pad_push (mp3parse->srcpad, outbuf);
+ }
+ 
