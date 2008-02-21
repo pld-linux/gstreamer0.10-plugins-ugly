@@ -5,21 +5,19 @@
 #
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
-%define		gst_req_ver	0.10.9
-%define		gstpb_req_ver	0.10.9
+%define		gst_req_ver	0.10.14
+%define		gstpb_req_ver	0.10.14
 #
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.6
-Release:	2
+Version:	0.10.7
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	f1016148ecbfba968c0ef1773066988b
+# Source0-md5:	cff4f55138d12152cf580a3ee71c2519
 Patch0:		%{name}-bashish.patch
-Patch1:		%{name}-mpegaudioparse.patch
-Patch2:		%{name}-dvdread.patch
 Patch3:		%{name}-asf-seek.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -165,8 +163,6 @@ Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 %prep
 %setup -q -n %{gstname}-%{version}
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 %patch3 -p1
 
 %build
