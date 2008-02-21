@@ -13,7 +13,7 @@ Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
 Version:	0.10.7
 Release:	1
-License:	LGPL
+License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
 # Source0-md5:	cff4f55138d12152cf580a3ee71c2519
@@ -37,6 +37,8 @@ BuildRequires:	python-PyXML
 BuildRequires:	a52dec-libs-devel
 %{?with_amr:BuildRequires:	amrnb-devel}
 BuildRequires:	lame-libs-devel
+# not yet
+#BuildRequires:	libdvdnav-devel >= 0.1.7
 BuildRequires:	libdvdread-devel
 BuildRequires:	libid3tag-devel >= 0.15
 BuildRequires:	libmad-devel >= 0.15
@@ -175,6 +177,7 @@ Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 	%{!?with_amr:--disable-amrnb} \
 	%{!?with_sid:--disable-sidplay} \
 	--disable-static \
+	--enable-experimental \
 	--enable-gtk-doc \
 	--with-html-dir=%{_gtkdocdir}
 
@@ -202,6 +205,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{gstlibdir}/libgstdvdsub.so
 %attr(755,root,root) %{gstlibdir}/libgstiec958.so
 %attr(755,root,root) %{gstlibdir}/libgstrmdemux.so
+%attr(755,root,root) %{gstlibdir}/libgstsynaesthesia.so
 %{_gtkdocdir}/gst-plugins-ugly-plugins-*
 
 ##
