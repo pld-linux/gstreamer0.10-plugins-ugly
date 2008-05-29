@@ -11,14 +11,13 @@
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.7
+Version:	0.10.8
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	cff4f55138d12152cf580a3ee71c2519
+# Source0-md5:	090d87a1716eee45a9804ca8558668da
 Patch0:		%{name}-bashish.patch
-Patch3:		%{name}-asf-seek.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.5
@@ -165,7 +164,6 @@ Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 %prep
 %setup -q -n %{gstname}-%{version}
 %patch0 -p1
-%patch3 -p1
 
 %build
 %{__libtoolize}
