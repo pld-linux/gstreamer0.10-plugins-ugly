@@ -1,5 +1,6 @@
 #
 # Conditional build:
+%bcond_without	cdio		# don't build cdio plugin
 %bcond_without	sid		# don't build sid plugin
 %bcond_with	amr		# AMR-NB plugin
 #
@@ -11,12 +12,12 @@
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.8
+Version:	0.10.9
 Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	090d87a1716eee45a9804ca8558668da
+# Source0-md5:	07a0b04875dea00fe90fd43b58ee9f39
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -36,6 +37,7 @@ BuildRequires:	python-PyXML
 BuildRequires:	a52dec-libs-devel
 %{?with_amr:BuildRequires:	amrnb-devel}
 BuildRequires:	lame-libs-devel
+%{?with_cdio:BuildRequires:	libcdio-devel >= 0.71}
 # not yet
 #BuildRequires:	libdvdnav-devel >= 0.1.7
 BuildRequires:	libdvdread-devel
@@ -94,6 +96,20 @@ Plugin for decoding of AMR-NB files.
 
 %description -n gstreamer-amrnb -l pl.UTF-8
 Wtyczka dekodująca pliki AMR-NB.
+
+%package -n gstreamer-cdio
+Summary:	GStreamer plugin for CD audio input using libcdio
+Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca płyty CD-Audio przy użyciu libcdio
+Group:		Libraries
+Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Requires:	libcdio >= 0.71
+
+%description -n gstreamer-cdio
+Plugin for playing audio tracks using libcdio under GStreamer.
+
+%description -n gstreamer-cdio -l pl.UTF-8
+Wtyczka do odtwarzania ścieżek dźwiękowych pod GStreamerem za pomocą
+libcdio.
 
 %package -n gstreamer-dvdread
 Summary:	GStreamer plugin for DVD playback
@@ -173,6 +189,7 @@ Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 %{__automake}
 %configure \
 	%{!?with_amr:--disable-amrnb} \
+	%{!?with_cdio:--disable-cdio} \
 	%{!?with_sid:--disable-sidplay} \
 	--disable-static \
 	--enable-experimental \
@@ -218,6 +235,12 @@ rm -rf $RPM_BUILD_ROOT
 %files -n gstreamer-amrnb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstamrnb.so
+%endif
+
+%if %{with cdio}
+%files -n gstreamer-cdio
+%defattr(644,root,root,755)
+%attr(755,root,root) %{gstlibdir}/libgstcdio.so
 %endif
 
 %files -n gstreamer-dvdread
