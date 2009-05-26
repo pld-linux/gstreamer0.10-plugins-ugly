@@ -6,14 +6,16 @@
 #
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
-%define		gst_req_ver	0.10.14
+%define		gst_req_ver	0.10.22
 %define		gstpb_req_ver	0.10.14
+#
+%include	/usr/lib/rpm/macros.gstreamer
 #
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
 Version:	0.10.11
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
@@ -22,6 +24,7 @@ Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.5
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gstreamer-devel >= %{gst_req_ver}
 BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
@@ -37,7 +40,7 @@ BuildRequires:	python-PyXML
 BuildRequires:	a52dec-libs-devel
 %{?with_amr:BuildRequires:	amrnb-devel}
 BuildRequires:	lame-libs-devel
-%{?with_cdio:BuildRequires:	libcdio-devel >= 0.71}
+%{?with_cdio:BuildRequires:	libcdio-devel >= 0.76}
 # not yet
 #BuildRequires:	libdvdnav-devel >= 0.1.7
 BuildRequires:	libdvdread-devel
@@ -46,8 +49,9 @@ BuildRequires:	libmad-devel >= 0.15
 %{?with_sid:BuildRequires:	libsidplay-devel >= 1.36.57}
 BuildRequires:	mpeg2dec-devel >= 0.4.0
 BuildRequires:	rpmbuild(macros) >= 1.98
+BuildRequires:	twolame-devel >= 0.3.0
 Requires:	gstreamer >= %{gst_req_ver}
-Requires:	gstreamer-plugins-base >= %{gst_req_ver}
+Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
 Obsoletes:	gstreamer-asf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -102,7 +106,7 @@ Summary:	GStreamer plugin for CD audio input using libcdio
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca płyty CD-Audio przy użyciu libcdio
 Group:		Libraries
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
-Requires:	libcdio >= 0.71
+Requires:	libcdio >= 0.76
 
 %description -n gstreamer-cdio
 Plugin for playing audio tracks using libcdio under GStreamer.
