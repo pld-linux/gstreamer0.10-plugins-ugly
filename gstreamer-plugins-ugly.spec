@@ -14,12 +14,12 @@
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.11
-Release:	2
+Version:	0.10.12
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	dfe2e201e066a3e86a9598b6769d9739
+# Source0-md5:	4400914a009201348fe66d2a83fa3971
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
@@ -46,8 +46,8 @@ BuildRequires:	lame-libs-devel
 BuildRequires:	libdvdread-devel
 BuildRequires:	libid3tag-devel >= 0.15
 BuildRequires:	libmad-devel >= 0.15
+BuildRequires:	libmpeg2-devel >= 0.5.1
 %{?with_sid:BuildRequires:	libsidplay-devel >= 1.36.57}
-BuildRequires:	mpeg2dec-devel >= 0.4.0
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	twolame-devel >= 0.3.0
 Requires:	gstreamer >= %{gst_req_ver}
@@ -181,6 +181,18 @@ Plugin for playback of C64 SID format music files.
 %description -n gstreamer-sid -l pl.UTF-8
 Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 
+%package -n gstreamer-x264
+Summary:	GStreamer x264 decoder plugin
+Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264
+Group:		Libraries
+Requires:	gstreamer-plugins-base >= %{gst_req_ver}
+
+%description -n gstreamer-x264
+GStreamer x264 decoder plugin.
+
+%description -n gstreamer-x264 -l pl.UTF-8
+Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264.
+
 %prep
 %setup -q -n %{gstname}-%{version}
 %patch0 -p1
@@ -219,6 +231,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{gstname}-%{gst_major_ver}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README RELEASE
+%{_datadir}/gstreamer-%{gst_major_ver}/presets
 %attr(755,root,root) %{gstlibdir}/libgstasf.so
 %attr(755,root,root) %{gstlibdir}/libgstdvdlpcmdec.so
 %attr(755,root,root) %{gstlibdir}/libgstdvdsub.so
@@ -271,3 +284,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstsid.so
 %endif
+
+%files -n gstreamer-x264
+%defattr(644,root,root,755)
+%attr(755,root,root) %{gstlibdir}/libgstx264.so
