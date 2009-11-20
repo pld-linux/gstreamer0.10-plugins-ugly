@@ -24,6 +24,7 @@ Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.52
 BuildRequires:	automake >= 1.5
+BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.12.1
 BuildRequires:	gstreamer-devel >= %{gst_req_ver}
@@ -48,6 +49,7 @@ BuildRequires:	libid3tag-devel >= 0.15
 BuildRequires:	libmad-devel >= 0.15
 BuildRequires:	libmpeg2-devel >= 0.5.1
 %{?with_sid:BuildRequires:	libsidplay-devel >= 1.36.57}
+BuildRequires:	libx264-devel
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	twolame-devel >= 0.3.0
 Requires:	gstreamer >= %{gst_req_ver}
