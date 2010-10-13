@@ -3,19 +3,18 @@
 %bcond_without	cdio		# don't build cdio plugin
 %bcond_without	sid		# don't build sid plugin
 %bcond_with	amr		# AMR-NB plugin
-#
+
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
 %define		gst_req_ver	0.10.25
 %define		gstpb_req_ver	0.10.25
-#
+
 %include	/usr/lib/rpm/macros.gstreamer
-#
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
 Version:	0.10.16
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
@@ -160,13 +159,13 @@ Wtyczka do odtwarzania plików MP3 przy użyciu bardzo dobrej biblioteki
 MAD.
 
 %package -n gstreamer-mpeg
-Summary:	GStreamer plugins for MPEG video playback and encoding
+Summary:	GStreamer plugins for MPEG video playback
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca i kodująca obraz MPEG
 Group:		Libraries
 Requires:	gstreamer >= %{gst_req_ver}
 
 %description -n gstreamer-mpeg
-Plugins for playing and encoding MPEG video.
+Plugins for playing MPEG videos.
 
 %description -n gstreamer-mpeg -l pl.UTF-8
 Wtyczki do odtwarzania i kodowania obrazu MPEG.
@@ -184,13 +183,13 @@ Plugin for playback of C64 SID format music files.
 Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 
 %package -n gstreamer-x264
-Summary:	GStreamer x264 decoder plugin
+Summary:	GStreamer x264 encoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264
 Group:		Libraries
 Requires:	gstreamer-plugins-base >= %{gst_req_ver}
 
 %description -n gstreamer-x264
-GStreamer x264 decoder plugin.
+GStreamer x264 encoder plugin.
 
 %description -n gstreamer-x264 -l pl.UTF-8
 Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264.
