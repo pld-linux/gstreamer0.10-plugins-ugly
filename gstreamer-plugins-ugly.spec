@@ -1,13 +1,13 @@
 #
 # Conditional build:
-%bcond_without	cdio		# don't build cdio plugin
-%bcond_without	sid		# don't build sid plugin
-%bcond_with	amr		# AMR-NB plugin
+%bcond_without	cdio		# cdio plugin
+%bcond_without	sid		# sid plugin
+%bcond_without	amr		# AMR-NB/AMR-WB plugins
 
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
-%define		gst_req_ver	0.10.25
-%define		gstpb_req_ver	0.10.25
+%define		gst_req_ver	0.10.26
+%define		gstpb_req_ver	0.10.26
 
 %include	/usr/lib/rpm/macros.gstreamer
 Summary:	Ugly GStreamer Streaming-media framework plugins
@@ -21,11 +21,11 @@ Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{vers
 # Source0-md5:	989e1b0fab010f73f76912f70ec5f62a
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
-BuildRequires:	autoconf >= 2.52
-BuildRequires:	automake >= 1.5
+BuildRequires:	autoconf >= 2.60
+BuildRequires:	automake >= 1:1.10
 BuildRequires:	docbook-dtd412-xml
-BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.12.1
+BuildRequires:	gettext-devel >= 0.17
+BuildRequires:	glib2-devel >= 1:2.20
 BuildRequires:	gstreamer-devel >= %{gst_req_ver}
 BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
 BuildRequires:	gtk-doc >= 1.7
@@ -33,12 +33,10 @@ BuildRequires:	libtool >= 1.4
 BuildRequires:	orc-devel >= 0.4.5
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	python >= 2.1
-BuildRequires:	python-PyXML
 ##
 ## plugins
 ##
 BuildRequires:	a52dec-libs-devel
-%{?with_amr:BuildRequires:	amrnb-devel}
 BuildRequires:	lame-libs-devel
 %{?with_cdio:BuildRequires:	libcdio-devel >= 0.76}
 # not yet
@@ -49,10 +47,13 @@ BuildRequires:	libmad-devel >= 0.15
 BuildRequires:	libmpeg2-devel >= 0.5.1
 %{?with_sid:BuildRequires:	libsidplay-devel >= 1.36.57}
 BuildRequires:	libx264-devel >= 0.1.3
+%{?with_amr:BuildRequires:	opencore-amr-devel}
 BuildRequires:	rpmbuild(macros) >= 1.98
-BuildRequires:	twolame-devel >= 0.3.0
+BuildRequires:	twolame-devel >= 0.3.10
+Requires:	glib2 >= 1:2.20
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Requires:	orc >= 0.4.5
 Obsoletes:	gstreamer-asf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -102,6 +103,18 @@ Plugin for decoding of AMR-NB files.
 %description -n gstreamer-amrnb -l pl.UTF-8
 Wtyczka dekodująca pliki AMR-NB.
 
+%package -n gstreamer-amrwb
+Summary:	GStreamer AMR-WB decoder plugin
+Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-WB
+Group:		Libraries
+Requires:	gstreamer >= %{gst_req_ver}
+
+%description -n gstreamer-amrwb
+Plugin for decoding of AMR-WB files.
+
+%description -n gstreamer-amrwb -l pl.UTF-8
+Wtyczka dekodująca pliki AMR-WB.
+
 %package -n gstreamer-cdio
 Summary:	GStreamer plugin for CD audio input using libcdio
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca płyty CD-Audio przy użyciu libcdio
@@ -138,6 +151,7 @@ Group:		Libraries
 # for NLS
 Requires:	%{name} = %{version}-%{release}
 Requires:	gstreamer >= %{gst_req_ver}
+Requires:	twolame-libs >= 0.3.10
 
 %description -n gstreamer-lame
 Plugin for encoding MP3 with lame.
@@ -160,7 +174,7 @@ MAD.
 
 %package -n gstreamer-mpeg
 Summary:	GStreamer plugins for MPEG video playback
-Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca i kodująca obraz MPEG
+Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca obraz MPEG
 Group:		Libraries
 Requires:	gstreamer >= %{gst_req_ver}
 
@@ -168,7 +182,7 @@ Requires:	gstreamer >= %{gst_req_ver}
 Plugins for playing MPEG videos.
 
 %description -n gstreamer-mpeg -l pl.UTF-8
-Wtyczki do odtwarzania i kodowania obrazu MPEG.
+Wtyczki do odtwarzania obrazu MPEG.
 
 %package -n gstreamer-sid
 Summary:	GStreamer Sid C64 music plugin
@@ -184,7 +198,7 @@ Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 
 %package -n gstreamer-x264
 Summary:	GStreamer x264 encoder plugin
-Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264
+Summary(pl.UTF-8):	Wtyczka do GStreamera kodująca przy użyciu biblioteki x264
 Group:		Libraries
 Requires:	gstreamer-plugins-base >= %{gst_req_ver}
 
@@ -192,7 +206,7 @@ Requires:	gstreamer-plugins-base >= %{gst_req_ver}
 GStreamer x264 encoder plugin.
 
 %description -n gstreamer-x264 -l pl.UTF-8
-Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264.
+Wtyczka do GStreamera kodująca przy użyciu biblioteki x264.
 
 %prep
 %setup -q -n %{gstname}-%{version}
@@ -205,9 +219,10 @@ Wtyczka do GStreamera dekodująca przy użyciu biblioteki x264.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{!?with_amr:--disable-amrnb} \
+	%{!?with_amr:--disable-amrnb --disable-amrwb} \
 	%{!?with_cdio:--disable-cdio} \
 	%{!?with_sid:--disable-sidplay} \
+	--disable-silent-rules \
 	--disable-static \
 	--enable-experimental \
 	--enable-gtk-doc \
@@ -253,6 +268,10 @@ rm -rf $RPM_BUILD_ROOT
 %files -n gstreamer-amrnb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstamrnb.so
+
+%files -n gstreamer-amrwb
+%defattr(644,root,root,755)
+%attr(755,root,root) %{gstlibdir}/libgstamrwbdec.so
 %endif
 
 %if %{with cdio}
