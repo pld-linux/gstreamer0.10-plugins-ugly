@@ -13,12 +13,12 @@
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.16
-Release:	3
+Version:	0.10.17
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	989e1b0fab010f73f76912f70ec5f62a
+# Source0-md5:	504ed6508c3a8f035a2002ed69d68506
 Patch0:		%{name}-bashish.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.60
@@ -30,7 +30,7 @@ BuildRequires:	gstreamer-devel >= %{gst_req_ver}
 BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool >= 1.4
-BuildRequires:	orc-devel >= 0.4.5
+BuildRequires:	orc-devel >= 0.4.6
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	python >= 2.1
 ##
@@ -53,7 +53,7 @@ BuildRequires:	twolame-devel >= 0.3.10
 Requires:	glib2 >= 1:2.20
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
-Requires:	orc >= 0.4.5
+Requires:	orc >= 0.4.6
 Obsoletes:	gstreamer-asf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -247,14 +247,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{gstname}-%{gst_major_ver}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README RELEASE
-%{_datadir}/gstreamer-%{gst_major_ver}/presets
 %attr(755,root,root) %{gstlibdir}/libgstasf.so
 %attr(755,root,root) %{gstlibdir}/libgstdvdlpcmdec.so
 %attr(755,root,root) %{gstlibdir}/libgstdvdsub.so
 %attr(755,root,root) %{gstlibdir}/libgstiec958.so
 %attr(755,root,root) %{gstlibdir}/libgstrmdemux.so
 %attr(755,root,root) %{gstlibdir}/libgstsynaesthesia.so
-%{_gtkdocdir}/gst-plugins-ugly-plugins-*
+%{_datadir}/gstreamer-%{gst_major_ver}/presets
+%{_gtkdocdir}/gst-plugins-ugly-plugins-0.10
 
 ##
 ## Plugins
