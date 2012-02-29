@@ -6,33 +6,34 @@
 
 %define		gstname		gst-plugins-ugly
 %define		gst_major_ver	0.10
-%define		gst_req_ver	0.10.26
-%define		gstpb_req_ver	0.10.26
+%define		gst_req_ver	0.10.36
+%define		gstpb_req_ver	0.10.36
 
 %include	/usr/lib/rpm/macros.gstreamer
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer-plugins-ugly
-Version:	0.10.18
-Release:	4
+Version:	0.10.19
+Release:	1
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.bz2
-# Source0-md5:	04a7009a4efea2844075949c111f5e4d
-Patch0:		%{name}-bashish.patch
+Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.xz
+# Source0-md5:	ba26045c8c8c91f0d48d327ccf53ac0c
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel >= 0.17
-BuildRequires:	glib2-devel >= 1:2.20
+BuildRequires:	glib2-devel >= 1:2.24
 BuildRequires:	gstreamer-devel >= %{gst_req_ver}
 BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool >= 1.4
-BuildRequires:	orc-devel >= 0.4.6
+BuildRequires:	orc-devel >= 0.4.11
 BuildRequires:	pkgconfig >= 1:0.9.0
 BuildRequires:	python >= 2.1
+BuildRequires:	tar >= 1:1.22
+BuildRequires:	xz
 ##
 ## plugins
 ##
@@ -46,14 +47,15 @@ BuildRequires:	libid3tag-devel >= 0.15
 BuildRequires:	libmad-devel >= 0.15
 BuildRequires:	libmpeg2-devel >= 0.5.1
 %{?with_sid:BuildRequires:	libsidplay-devel >= 1.36.57}
+# ABI 55
 BuildRequires:	libx264-devel >= 0.1.3
 %{?with_amr:BuildRequires:	opencore-amr-devel}
 BuildRequires:	rpmbuild(macros) >= 1.98
 BuildRequires:	twolame-devel >= 0.3.10
-Requires:	glib2 >= 1:2.20
+Requires:	glib2 >= 1:2.24
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
-Requires:	orc >= 0.4.6
+Requires:	orc >= 0.4.11
 Obsoletes:	gstreamer-asf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -210,7 +212,6 @@ Wtyczka do GStreamera kodująca przy użyciu biblioteki x264.
 
 %prep
 %setup -q -n %{gstname}-%{version}
-%patch0 -p1
 
 %build
 %{__libtoolize}
