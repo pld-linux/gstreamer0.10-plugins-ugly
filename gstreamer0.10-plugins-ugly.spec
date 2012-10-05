@@ -12,7 +12,7 @@
 %include	/usr/lib/rpm/macros.gstreamer
 Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
-Name:		gstreamer-plugins-ugly
+Name:		gstreamer0.10-plugins-ugly
 Version:	0.10.19
 Release:	2
 License:	LGPL v2+
@@ -25,8 +25,8 @@ BuildRequires:	automake >= 1:1.10
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	gettext-devel >= 0.17
 BuildRequires:	glib2-devel >= 1:2.24
-BuildRequires:	gstreamer-devel >= %{gst_req_ver}
-BuildRequires:	gstreamer-plugins-base-devel >= %{gstpb_req_ver}
+BuildRequires:	gstreamer0.10-devel >= %{gst_req_ver}
+BuildRequires:	gstreamer0.10-plugins-base-devel >= %{gstpb_req_ver}
 BuildRequires:	gtk-doc >= 1.7
 BuildRequires:	libtool >= 1.4
 BuildRequires:	orc-devel >= 0.4.11
@@ -81,133 +81,133 @@ nowych typów danych lub możliwości obróbki.
 ## Plugins
 ##
 
-%package -n gstreamer-a52dec
+%package -n gstreamer0.10-a52dec
 Summary:	GStreamer VOB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca VOB
 Group:		Libraries
-Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Requires:	gstreamer0.10-plugins-base >= %{gstpb_req_ver}
 
-%description -n gstreamer-a52dec
+%description -n gstreamer0.10-a52dec
 Plugin for decoding of VOB files.
 
-%description -n gstreamer-a52dec -l pl.UTF-8
+%description -n gstreamer0.10-a52dec -l pl.UTF-8
 Wtyczka dekodująca pliki VOB.
 
-%package -n gstreamer-amrnb
+%package -n gstreamer0.10-amrnb
 Summary:	GStreamer AMR-NB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-NB
 Group:		Libraries
-Requires:	gstreamer >= %{gst_req_ver}
+Requires:	gstreamer0.10 >= %{gst_req_ver}
 
-%description -n gstreamer-amrnb
+%description -n gstreamer0.10-amrnb
 Plugin for decoding of AMR-NB files.
 
-%description -n gstreamer-amrnb -l pl.UTF-8
+%description -n gstreamer0.10-amrnb -l pl.UTF-8
 Wtyczka dekodująca pliki AMR-NB.
 
-%package -n gstreamer-amrwb
+%package -n gstreamer0.10-amrwb
 Summary:	GStreamer AMR-WB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-WB
 Group:		Libraries
-Requires:	gstreamer >= %{gst_req_ver}
+Requires:	gstreamer0.10 >= %{gst_req_ver}
 
-%description -n gstreamer-amrwb
+%description -n gstreamer0.10-amrwb
 Plugin for decoding of AMR-WB files.
 
-%description -n gstreamer-amrwb -l pl.UTF-8
+%description -n gstreamer0.10-amrwb -l pl.UTF-8
 Wtyczka dekodująca pliki AMR-WB.
 
-%package -n gstreamer-cdio
+%package -n gstreamer0.10-cdio
 Summary:	GStreamer plugin for CD audio input using libcdio
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca płyty CD-Audio przy użyciu libcdio
 Group:		Libraries
-Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Requires:	gstreamer0.10-plugins-base >= %{gstpb_req_ver}
 Requires:	libcdio >= 0.76
 
-%description -n gstreamer-cdio
+%description -n gstreamer0.10-cdio
 Plugin for playing audio tracks using libcdio under GStreamer.
 
-%description -n gstreamer-cdio -l pl.UTF-8
+%description -n gstreamer0.10-cdio -l pl.UTF-8
 Wtyczka do odtwarzania ścieżek dźwiękowych pod GStreamerem za pomocą
 libcdio.
 
-%package -n gstreamer-dvdread
+%package -n gstreamer0.10-dvdread
 Summary:	GStreamer plugin for DVD playback
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca DVD
 Group:		Libraries
 # for NLS
 Requires:	%{name} = %{version}-%{release}
-Requires:	gstreamer >= %{gst_req_ver}
-Obsoletes:	gstreamer-libdvdread
+Requires:	gstreamer0.10 >= %{gst_req_ver}
+Obsoletes:	gstreamer-libdvdread < 0.11
 
-%description -n gstreamer-dvdread
+%description -n gstreamer0.10-dvdread
 GStreamer plugin for DVD playback.
 
-%description -n gstreamer-dvdread -l pl.UTF-8
+%description -n gstreamer0.10-dvdread -l pl.UTF-8
 Wtyczka odtwarzająca DVD do GStreamera.
 
-%package -n gstreamer-lame
+%package -n gstreamer0.10-lame
 Summary:	GStreamer plugin encoding MP3 songs
 Summary(pl.UTF-8):	Wtyczka do GStreamera kodująca pliki MP3
 Group:		Libraries
 # for NLS
 Requires:	%{name} = %{version}-%{release}
-Requires:	gstreamer >= %{gst_req_ver}
+Requires:	gstreamer0.10 >= %{gst_req_ver}
 Requires:	twolame-libs >= 0.3.10
 
-%description -n gstreamer-lame
+%description -n gstreamer0.10-lame
 Plugin for encoding MP3 with lame.
 
-%description -n gstreamer-lame -l pl.UTF-8
+%description -n gstreamer0.10-lame -l pl.UTF-8
 Wtyczka do GStreamera kodująca pliki MP3 przy użyciu lame.
 
-%package -n gstreamer-mad
+%package -n gstreamer0.10-mad
 Summary:	GStreamer plugin using MAD for MP3 decoding
 Summary(pl.UTF-8):	Wtyczka do GStreamera używająca MAD do dekodowania MP3
 Group:		Libraries
-Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
+Requires:	gstreamer0.10-plugins-base >= %{gstpb_req_ver}
 
-%description -n gstreamer-mad
+%description -n gstreamer0.10-mad
 Plugin for playback of MP3 songs using the very good MAD library.
 
-%description -n gstreamer-mad -l pl.UTF-8
+%description -n gstreamer0.10-mad -l pl.UTF-8
 Wtyczka do odtwarzania plików MP3 przy użyciu bardzo dobrej biblioteki
 MAD.
 
-%package -n gstreamer-mpeg
+%package -n gstreamer0.10-mpeg
 Summary:	GStreamer plugins for MPEG video playback
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca obraz MPEG
 Group:		Libraries
-Requires:	gstreamer >= %{gst_req_ver}
+Requires:	gstreamer0.10 >= %{gst_req_ver}
 
-%description -n gstreamer-mpeg
+%description -n gstreamer0.10-mpeg
 Plugins for playing MPEG videos.
 
-%description -n gstreamer-mpeg -l pl.UTF-8
+%description -n gstreamer0.10-mpeg -l pl.UTF-8
 Wtyczki do odtwarzania obrazu MPEG.
 
-%package -n gstreamer-sid
+%package -n gstreamer0.10-sid
 Summary:	GStreamer Sid C64 music plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca muzykę Sid C64
 Group:		Libraries
-Requires:	gstreamer >= %{gst_req_ver}
+Requires:	gstreamer0.10 >= %{gst_req_ver}
 
-%description -n gstreamer-sid
+%description -n gstreamer0.10-sid
 Plugin for playback of C64 SID format music files.
 
-%description -n gstreamer-sid -l pl.UTF-8
+%description -n gstreamer0.10-sid -l pl.UTF-8
 Wtyczka do odtwarzania plików z muzyką w formacie C64 SID.
 
-%package -n gstreamer-x264
+%package -n gstreamer0.10-x264
 Summary:	GStreamer x264 encoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera kodująca przy użyciu biblioteki x264
 Group:		Libraries
-Requires:	gstreamer-plugins-base >= %{gst_req_ver}
+Requires:	gstreamer0.10-plugins-base >= %{gst_req_ver}
 
-%description -n gstreamer-x264
+%description -n gstreamer0.10-x264
 GStreamer x264 encoder plugin.
 
-%description -n gstreamer-x264 -l pl.UTF-8
+%description -n gstreamer0.10-x264 -l pl.UTF-8
 Wtyczka do GStreamera kodująca przy użyciu biblioteki x264.
 
 %prep
@@ -261,51 +261,51 @@ rm -rf $RPM_BUILD_ROOT
 ## Plugins
 ##
 
-%files -n gstreamer-a52dec
+%files -n gstreamer0.10-a52dec
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgsta52dec.so
 
 %if %{with amr}
-%files -n gstreamer-amrnb
+%files -n gstreamer0.10-amrnb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstamrnb.so
 
-%files -n gstreamer-amrwb
+%files -n gstreamer0.10-amrwb
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstamrwbdec.so
 %endif
 
 %if %{with cdio}
-%files -n gstreamer-cdio
+%files -n gstreamer0.10-cdio
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstcdio.so
 %endif
 
-%files -n gstreamer-dvdread
+%files -n gstreamer0.10-dvdread
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstdvdread.so
 
-%files -n gstreamer-lame
+%files -n gstreamer0.10-lame
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstlame.so
 %attr(755,root,root) %{gstlibdir}/libgsttwolame.so
 
-%files -n gstreamer-mad
+%files -n gstreamer0.10-mad
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstmad.so
 
-%files -n gstreamer-mpeg
+%files -n gstreamer0.10-mpeg
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstmpeg2dec.so
 %attr(755,root,root) %{gstlibdir}/libgstmpegaudioparse.so
 %attr(755,root,root) %{gstlibdir}/libgstmpegstream.so
 
 %if %{with sid}
-%files -n gstreamer-sid
+%files -n gstreamer0.10-sid
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstsid.so
 %endif
 
-%files -n gstreamer-x264
+%files -n gstreamer0.10-x264
 %defattr(644,root,root,755)
 %attr(755,root,root) %{gstlibdir}/libgstx264.so
