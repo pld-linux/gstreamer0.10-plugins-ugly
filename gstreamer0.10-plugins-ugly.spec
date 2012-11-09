@@ -14,7 +14,7 @@ Summary:	Ugly GStreamer Streaming-media framework plugins
 Summary(pl.UTF-8):	Brzydkie wtyczki do środowiska obróbki strumieni GStreamer
 Name:		gstreamer0.10-plugins-ugly
 Version:	0.10.19
-Release:	3
+Release:	4
 License:	LGPL v2+
 Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.xz
@@ -87,6 +87,7 @@ Summary:	GStreamer VOB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca VOB
 Group:		Libraries
 Requires:	gstreamer0.10-plugins-base >= %{gstpb_req_ver}
+Obsoletes:	gstreamer-a52dec < 1.0
 
 %description -n gstreamer0.10-a52dec
 Plugin for decoding of VOB files.
@@ -99,6 +100,7 @@ Summary:	GStreamer AMR-NB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-NB
 Group:		Libraries
 Requires:	gstreamer0.10 >= %{gst_req_ver}
+Obsoletes:	gstreamer-amrnb < 1.0
 
 %description -n gstreamer0.10-amrnb
 Plugin for decoding of AMR-NB files.
@@ -111,6 +113,7 @@ Summary:	GStreamer AMR-WB decoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera dekodująca pliki AMR-WB
 Group:		Libraries
 Requires:	gstreamer0.10 >= %{gst_req_ver}
+Obsoletes:	gstreamer-amrwb < 1.0
 
 %description -n gstreamer0.10-amrwb
 Plugin for decoding of AMR-WB files.
@@ -124,6 +127,7 @@ Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca płyty CD-Audio przy uży
 Group:		Libraries
 Requires:	gstreamer0.10-plugins-base >= %{gstpb_req_ver}
 Requires:	libcdio >= 0.76
+Obsoletes:	gstreamer-cdio < 1.0
 
 %description -n gstreamer0.10-cdio
 Plugin for playing audio tracks using libcdio under GStreamer.
@@ -139,6 +143,7 @@ Group:		Libraries
 # for NLS
 Requires:	%{name} = %{version}-%{release}
 Requires:	gstreamer0.10 >= %{gst_req_ver}
+Obsoletes:	gstreamer-dvdread < 1.0
 Obsoletes:	gstreamer-libdvdread < 0.11
 
 %description -n gstreamer0.10-dvdread
@@ -155,6 +160,7 @@ Group:		Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	gstreamer0.10 >= %{gst_req_ver}
 Requires:	twolame-libs >= 0.3.10
+Obsoletes:	gstreamer-lame < 1.0
 
 %description -n gstreamer0.10-lame
 Plugin for encoding MP3 with lame.
@@ -167,6 +173,7 @@ Summary:	GStreamer plugin using MAD for MP3 decoding
 Summary(pl.UTF-8):	Wtyczka do GStreamera używająca MAD do dekodowania MP3
 Group:		Libraries
 Requires:	gstreamer0.10-plugins-base >= %{gstpb_req_ver}
+Obsoletes:	gstreamer-mad < 1.0
 
 %description -n gstreamer0.10-mad
 Plugin for playback of MP3 songs using the very good MAD library.
@@ -180,6 +187,7 @@ Summary:	GStreamer plugins for MPEG video playback
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca obraz MPEG
 Group:		Libraries
 Requires:	gstreamer0.10 >= %{gst_req_ver}
+Obsoletes:	gstreamer-mpeg < 1.0
 
 %description -n gstreamer0.10-mpeg
 Plugins for playing MPEG videos.
@@ -192,6 +200,7 @@ Summary:	GStreamer Sid C64 music plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera odtwarzająca muzykę Sid C64
 Group:		Libraries
 Requires:	gstreamer0.10 >= %{gst_req_ver}
+Obsoletes:	gstreamer-sid < 1.0
 
 %description -n gstreamer0.10-sid
 Plugin for playback of C64 SID format music files.
@@ -204,6 +213,7 @@ Summary:	GStreamer x264 encoder plugin
 Summary(pl.UTF-8):	Wtyczka do GStreamera kodująca przy użyciu biblioteki x264
 Group:		Libraries
 Requires:	gstreamer0.10-plugins-base >= %{gst_req_ver}
+Obsoletes:	gstreamer-x264 < 1.0
 
 %description -n gstreamer0.10-x264
 GStreamer x264 encoder plugin.
