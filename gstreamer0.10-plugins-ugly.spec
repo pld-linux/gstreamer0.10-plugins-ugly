@@ -20,6 +20,7 @@ Group:		Libraries
 Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.xz
 # Source0-md5:	ba26045c8c8c91f0d48d327ccf53ac0c
 Patch0:		amr-includes.patch
+Patch1:		libcdio.patch
 URL:		http://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
@@ -224,6 +225,7 @@ Wtyczka do GStreamera kodująca przy użyciu biblioteki x264.
 %prep
 %setup -q -n %{gstname}-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
