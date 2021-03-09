@@ -16,12 +16,12 @@ Version:	0.10.19
 Release:	15
 License:	LGPL v2+
 Group:		Libraries
-Source0:	http://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.xz
+Source0:	https://gstreamer.freedesktop.org/src/gst-plugins-ugly/%{gstname}-%{version}.tar.xz
 # Source0-md5:	ba26045c8c8c91f0d48d327ccf53ac0c
 Patch0:		amr-includes.patch
 Patch1:		libcdio.patch
 Patch2:		gstreamer-common-gtkdoc.patch
-URL:		http://gstreamer.freedesktop.org/
+URL:		https://gstreamer.freedesktop.org/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake >= 1:1.10
 BuildRequires:	docbook-dtd412-xml
@@ -52,13 +52,13 @@ BuildRequires:	libmpeg2-devel >= 0.5.1
 # ABI 55
 BuildRequires:	libx264-devel >= 0.1.3
 %{?with_amr:BuildRequires:	opencore-amr-devel}
-BuildRequires:	rpmbuild(macros) >= 1.98
+BuildRequires:	rpmbuild(macros) >= 1.745
 BuildRequires:	twolame-devel >= 0.3.10
 Requires:	glib2 >= 1:2.24
 Requires:	gstreamer >= %{gst_req_ver}
 Requires:	gstreamer-plugins-base >= %{gstpb_req_ver}
 Requires:	orc >= 0.4.11
-Obsoletes:	gstreamer-asf
+Obsoletes:	gstreamer-asf < 0.10
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		gstlibdir 	%{_libdir}/gstreamer-%{gst_major_ver}
